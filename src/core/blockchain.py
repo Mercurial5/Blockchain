@@ -19,13 +19,13 @@ class Blockchain:
 
     def add_transaction(self, transaction: Transaction) -> None:
         logger.info(f'Adding new transaction - {transaction}')
+        self.mem_pool.append(transaction)
+
         if len(self.mem_pool) == AMOUNT_OF_TRANSACTIONS_PER_BLOCK:
             logger.info('Mem pool is full, creating a block')
             block = Block(len(self.chain), self.latest.hash, self.mem_pool.copy())
             self.chain.append(block)
             self.mem_pool.clear()
-
-        self.mem_pool.append(transaction)
 
     def __str__(self) -> str:
         return f'<Blockchain length={len(self.chain)}>'
