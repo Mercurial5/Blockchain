@@ -2,8 +2,8 @@ import hashlib
 from dataclasses import dataclass, field
 from datetime import datetime
 
-from merkle_tree import MerkleTree
-from transaction import Transaction
+from core.merkle_tree import MerkleTree
+from core.transaction import Transaction
 
 
 @dataclass
