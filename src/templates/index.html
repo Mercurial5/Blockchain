@@ -31,5 +31,15 @@
         </li>
         {% endfor %}
     </ul>
+    <h2>Transactions in Memory Pool</h2>
+    <ul>
+        {% for transaction in mem_pool%}
+        <li>
+            <p>Sender: {{ transaction.sender }}</p>
+            <p>Receiver: {{ transaction.receiver }}</p>
+            <p>Amount: {{ transaction.amount }}</p>
+        </li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
