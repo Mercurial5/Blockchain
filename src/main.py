@@ -13,7 +13,8 @@ def main():
     transaction3 = Transaction('daulet', 'dias', 1000)
     blockchain.add_transaction(transaction3)
 
-    print(blockchain.latest.transactions)
+    print('Current chain:', blockchain.chain)
+    print('Current mem pool:', blockchain.mem_pool)
 
 
 if __name__ == '__main__':
