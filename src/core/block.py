@@ -9,14 +9,15 @@ from core.transaction import Transaction
 class Block:
     index: int
     previous_hash: str
-    hash: str = ''
+    _transactions: list[Transaction]
+    hash: str = field(init=False)
     timestamp: datetime = field(default_factory=datetime.now)
-    _transactions: list[Transaction] = field(default_factory=list)
 
-    def add_transaction(self, transaction: Transaction) -> None:
-        new_hash = sha256((self.hash + str(transaction)).encode()).hexdigest()
-        self.hash = new_hash
-        self._transactions.append(transaction)
+    def __post_init__(self):
+        self.hash = ''
+
+        for transaction in self._transactions:
+            self.hash = sha256((self.hash + str(transaction)).encode()).hexdigest()
 
     @property
     def length(self) -> int:
