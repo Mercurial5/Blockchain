@@ -10,7 +10,7 @@ blockchain = Blockchain()
 @app.route('/')
 def index():
     blocks, mem_pool = blockchain.chain, blockchain.mem_pool
-    return render_template('index.html', blocks=blocks)
+    return render_template('index.html', blocks=blocks, mem_pool=mem_pool)
 
 
 @app.route('/add_transaction', methods=['POST'])
